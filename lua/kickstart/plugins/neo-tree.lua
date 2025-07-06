@@ -8,17 +8,17 @@ return {
     'nvim-lua/plenary.nvim',
     'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
     'MunifTanjim/nui.nvim',
+    'folke/snacks.nvim',
   },
   lazy = false,
   keys = {
-    { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
+    { '<leader>e', ':Neotree toggle right<CR>', desc = 'NeoTree toggle right', silent = true },
   },
   opts = {
     filesystem = {
       window = {
-        mappings = {
-          ['\\'] = 'close_window',
-        },
+        width = 20,
+        mappings = {},
       },
     },
   },
