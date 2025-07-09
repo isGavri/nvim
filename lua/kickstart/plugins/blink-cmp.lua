@@ -81,7 +81,7 @@ return {
         -- Optionally, set `auto_show = true` to show the documentation after a delay.
         documentation = { auto_show = false, auto_show_delay_ms = 500 },
         list = {
-          selection = { preselect = false, auto_insert = true },
+          selection = { preselect = true, auto_insert = true },
         },
       },
 
