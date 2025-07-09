@@ -62,16 +62,18 @@ The keymaps are:
 
 | Keys     | Mode | Command/Action      |
 |----------|-----|-----------|
-| <esc>    | n  | :nohlsearch  |
-| <leader>q      | n  | LSP quick diagnostics     |
-| <leader>      | n  | LSP code actions     |
-| <esc><esc>  | t  | Exit terminal mode     |
-| <c-h> | n | Moves windows focus to the left |
-| <c-j> | n | Moves windows focus down |
-| <c-k> | n | Moves windows focus up |
-| <c-l> | n | Moves windows focus to the right |
+| `<esc>`    | n  | :nohlsearch  |
+| `<leader>`q      | n  | LSP quick diagnostics     |
+| `<leader>`a      | n  | LSP code actions     |
+| `<esc><esc>`  | t  | Exit terminal mode     |
+| `<c-h>` | n | Moves windows focus to the left |
+| `<c-j>` | n | Moves windows focus down |
+| `<c-k>`| n | Moves windows focus up |
+| `<c-l>`   | n | Moves windows focus to the right |
 | H | n | Goes to the previous buffer |
 | L | n | Goes to the next buffer |
+
+*Bear in mind that keymaps are case sensitive*
 
 #### Recommended
 
