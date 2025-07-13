@@ -64,7 +64,7 @@ The keymaps are:
 |----------|-----|-----------|
 | `<esc>`    | n  | :nohlsearch  |
 | `<leader>`q      | n  | LSP quick diagnostics     |
-| `<leader>`a      | n  | LSP code actions     |
+| `<leader>`ca      | n  | LSP code actions     |
 | `<esc><esc>`  | t  | Exit terminal mode     |
 | `<c-h>` | n | Moves windows focus to the left |
 | `<c-j>` | n | Moves windows focus down |
