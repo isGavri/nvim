@@ -81,3 +81,15 @@ The keymaps are:
 so that you have your own copy that you can modify, then install by cloning the
 fork to your machine.
 
+#### Tips and tricks
+You can use this symbols as an alias for easier text objects motions
+| Symbol  | Characters    | Motion (forward/backward) |
+| ------- | ------------- | ------------------------- |
+| `P`     | `()`          | `%`                       |
+| `B`     | `{}`          | `%`                       |
+| `S`     | `[]`          | `%`                       |
+| `A`     | `<>`          | `%` (sometimes)           |
+| `q`     | `' '`         | N/A                       |
+| `Q`     | `" "`         | N/A                       |
+| `` ` `` | `` ` ` ``     | N/A                       |
+| `t`     | `<tag></tag>` | `]t` / `[t`               |
