@@ -46,6 +46,12 @@ require('lazy').setup({
 
   require 'kickstart.plugins.markdown',
 
+  require 'kickstart.plugins.num',
+
+  require 'kickstart.plugins.biscuits',
+
+  require 'kickstart.plugins.flash',
+
   require 'kickstart.plugins.snacks',
 
   require 'kickstart.plugins.ui',
