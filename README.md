@@ -70,6 +70,8 @@ The keymaps are:
 | `<c-j>` | n | Moves windows focus down |
 | `<c-k>`| n | Moves windows focus up |
 | `<c-l>`   | n | Moves windows focus to the right |
+| `J` | v | Moves selected line below |
+| `K` | v | Moves selected line above |
 | H | n | Goes to the previous buffer |
 | L | n | Goes to the next buffer |
 

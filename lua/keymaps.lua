@@ -12,6 +12,10 @@ vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { noremap = true, sil
 
 -- Exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+-- Move selected lines with shift+j or shift+k
+-- TODO: update readme
+vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
+vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
 
 -- TIP: Disable arrow keys in normal mode
 -- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
