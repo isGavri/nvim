@@ -5,8 +5,10 @@ return {
     -- lazy = false,
     -- priority = 1000,
     config = function()
-      -- vim.g.zenbones_darken_comments = 45
-      -- vim.cmd.colorscheme 'zenbones'
+      vim.g.zenbones_darken_comments = 45
+      vim.cmd.colorscheme 'zenbones'
+
+      vim.api.nvim_set_hl(0, 'Normal', { bg = '#0A0E08', nocombine = true })
     end,
   },
   {
@@ -23,7 +25,7 @@ return {
     -- lazy = false,
     -- priority = 1000,
     config = function()
-      -- vim.opt.termguicolors = true
+      vim.opt.termguicolors = true
       -- vim.cmd.colorscheme 'shadow'
     end,
   },
@@ -40,7 +42,7 @@ return {
       vim.g.gruvbox_mateial_dim_inactive_windows = 1
       vim.g.gruvbox_material_better_performance = 1
       vim.g.gruvbox_material_enable_italic = true
-      vim.cmd.colorscheme 'gruvbox-material'
+      -- vim.cmd.colorscheme 'gruvbox-material'
     end,
   },
   {

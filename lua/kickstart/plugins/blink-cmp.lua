@@ -1,13 +1,13 @@
 return {
   { -- Autocompletion
     'saghen/blink.cmp',
-    event = 'VimEnter',
+    event = 'InsertEnter',
     version = '1.*',
     dependencies = {
       -- Snippet Engine
       {
         'L3MON4D3/LuaSnip',
-        version = '2.*',
+        version = 'v2.*',
         build = (function()
           -- Build Step is needed for regex support in snippets.
           -- This step is not supported in many windows environments.
@@ -18,23 +18,58 @@ return {
           return 'make install_jsregexp'
         end)(),
         dependencies = {
-          -- `friendly-snippets` contains a variety of premade snippets.
-          --    See the README about individual language/framework/plugin snippets:
-          --    https://github.com/rafamadriz/friendly-snippets
-          -- {
-          --   'rafamadriz/friendly-snippets',
-          --   config = function()
-          --     require('luasnip.loaders.from_vscode').lazy_load()
-          --   end,
-          -- },
+          {
+            'rafamadriz/friendly-snippets',
+            config = function()
+              local ls = require 'luasnip'
+
+              ls.config.set_config {
+                enable_autosnippets = true,
+                store_selection_keys = '<Tab>',
+              }
+              -- Uncomment for latex snippets
+              require('luasnip.loaders.from_lua').load { paths = { '~/snippets/' } }
+
+              vim.keymap.set({ 'i', 's' }, '<C-L>', function()
+                ls.jump(1)
+              end, { silent = true })
+              vim.keymap.set({ 'i', 's' }, '<C-J>', function()
+                ls.jump(-1)
+              end, { silent = true })
+              -- Uncomment for friendly-snippets
+              -- require('luasnip.loaders.from_vscode').lazy_load()
+              local list_snips = function()
+                local ft_list = require('luasnip').available()[vim.o.filetype]
+                local ft_snips = {}
+                for _, item in pairs(ft_list) do
+                  ft_snips[item.trigger] = item.name
+                end
+                print(vim.inspect(ft_snips))
+              end
+
+              vim.api.nvim_create_user_command('SnipList', list_snips, {})
+            end,
+          },
         },
         opts = {},
+        config = function()
+          vim.api.nvim_create_autocmd('FileType', {
+            pattern = 'tex',
+            callback = function()
+              require('luasnip.loaders.from_lua').load { paths = { '$HOME/snippets/' } }
+            end,
+          })
+        end,
       },
       'folke/lazydev.nvim',
     },
     --- @module 'blink.cmp'
     --- @type blink.cmp.Config
     opts = {
+      enabled = function()
+        local disabled_filetype = {}
+        return not vim.tbl_contains(disabled_filetype, vim.bo.filetype)
+      end,
       keymap = {
         -- 'default' (recommended) for mappings similar to built-in completions
         --   <c-y> to accept ([y]es) the completion.
@@ -79,6 +114,7 @@ return {
       completion = {
         -- By default, you may press `<c-space>` to show the documentation.
         -- Optionally, set `auto_show = true` to show the documentation after a delay.
+        keyword = { range = 'prefix' },
         documentation = { auto_show = false, auto_show_delay_ms = 500 },
         list = {
           selection = { preselect = true, auto_insert = true },
@@ -92,7 +128,9 @@ return {
         },
       },
 
-      snippets = { preset = 'luasnip' },
+      snippets = {
+        preset = 'luasnip',
+      },
 
       -- Blink.cmp includes an optional, recommended rust fuzzy matcher,
       -- which automatically downloads a prebuilt binary when enabled.

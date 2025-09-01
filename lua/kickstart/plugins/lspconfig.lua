@@ -221,7 +221,7 @@ return {
         ts_ls = {},
         tailwindcss = {},
         hyprls = {},
-        --
+        asm_lsp = {},
 
         lua_ls = {
           -- cmd = { ... },

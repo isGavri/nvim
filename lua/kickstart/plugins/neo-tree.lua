@@ -17,7 +17,7 @@ return {
   opts = {
     filesystem = {
       window = {
-        width = 20,
+        width = 30,
         mappings = {},
       },
     },

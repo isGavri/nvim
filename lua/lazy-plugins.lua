@@ -11,7 +11,7 @@
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
 
-  'NMAC427/guess-indent.nvim', -- Detect tabstop and shiftwidth automatically
+  -- 'NMAC427/guess-indent.nvim', -- Detect tabstop and shiftwidth automatically
 
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
@@ -28,7 +28,7 @@ require('lazy').setup({
   require 'kickstart.plugins.which-key',
 
   -- Trying out snacks picker
-  -- require 'kickstart.plugins.telescope',
+  require 'kickstart.plugins.telescope',
 
   require 'kickstart.plugins.lspconfig',
 
@@ -44,17 +44,20 @@ require('lazy').setup({
 
   require 'kickstart.plugins.treesitter',
 
-  require 'kickstart.plugins.markdown',
+  require 'custom.plugins.markdown',
 
   require 'kickstart.plugins.num',
 
-  require 'kickstart.plugins.biscuits',
+  -- require 'kickstart.plugins.biscuits',
 
   require 'kickstart.plugins.flash',
 
   require 'kickstart.plugins.snacks',
 
   require 'kickstart.plugins.ui',
+
+  -- Latex
+  require 'custom.plugins.latex',
 
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
@@ -67,7 +70,7 @@ require('lazy').setup({
   --
   require 'kickstart.plugins.autopairs',
   -- NOTE: Trying out snacks explorer
-  -- require 'kickstart.plugins.neo-tree',
+  require 'kickstart.plugins.neo-tree',
 
   -- The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.

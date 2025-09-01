@@ -7,6 +7,20 @@ vim.o.number = true
 -- Relative numbers
 vim.o.relativenumber = true
 
+-- Conceal Level
+vim.o.conceallevel = 2
+
+-- Wrap
+vim.o.wrap = false
+
+-- Latex
+vim.g.tex_flavor = 'latex'
+
+-- Spell checking
+-- vim.o.spell = true
+---@diagnostic disable-next-line: undefined-global
+-- vim.o.spelllang = en
+
 -- Enable mouse mode
 vim.o.mouse = 'a'
 
