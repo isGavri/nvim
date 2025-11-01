@@ -9,8 +9,12 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 -- Code action keymap
 vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { noremap = true, silent = true, desc = 'Open code [a]ction' })
+-- Document symbols
+-- vim.keymap.set('n', '<leader>cs', vim.lsp.buf.document_symbol, { noremap = true, silent = true, desc = 'Open code [a]ction' })
 -- Diagnostic line keymap
 vim.keymap.set('n', '<leader>cd', vim.diagnostic.open_float, { noremap = true, silent = true, desc = 'Open window line of diagnisis' })
+-- Dimiss notifications
+vim.keymap.set('n', '<leader>un', ':Noice dimiss<CR>', { desc = 'Dimiss notifications' })
 
 -- Exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
@@ -21,6 +25,20 @@ vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
 vim.keymap.set('n', '<Leader>r', [[:%s/\<<C-r><C-w>\>//g<Left><Left>]])
 -- TODO: update readme
 vim.keymap.set('t', '<Esc><Esc>', '<c-\\><c-n>', { noremap = true, silent = true, desc = 'Leaves terminal mode' })
+
+-- Toggle line number
+local function toggle_line_numbers()
+  if vim.o.relativenumber then
+    vim.o.relativenumber = false
+    vim.o.number = false
+  else
+    vim.o.relativenumber = true
+    vim.o.number = true
+  end
+end
+
+vim.keymap.set('n', '<leader>tl', toggle_line_numbers, { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>tt', ':set laststatus=0<CR>', { desc = 'Disables status line', noremap = true, silent = true })
 
 vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
 vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')

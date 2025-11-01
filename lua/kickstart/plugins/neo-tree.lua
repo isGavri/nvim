@@ -12,12 +12,13 @@ return {
   },
   lazy = false,
   keys = {
-    { '<leader>e', ':Neotree toggle right<CR>', desc = 'NeoTree toggle right', silent = true },
+    { '<leader>e', ':Neotree toggle right<CR>', desc = 'NeoTree toggle left', silent = true },
+    { '<leader>be', ':Neotree buffers<CR>', desc = 'NeoTree open boffers', silent = true },
   },
   opts = {
     filesystem = {
       window = {
-        width = 30,
+        width = 25,
         mappings = {},
       },
     },

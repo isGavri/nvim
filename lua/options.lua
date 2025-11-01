@@ -90,8 +90,12 @@ vim.o.termguicolors = true
 
 -- Folding with tree sitter
 vim.o.foldmethod = 'expr'
-vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.o.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+vim.opt.foldcolumn = '0'
 vim.o.foldlevelstart = 99
+vim.opt.foldlevelstart = 4
+
+vim.opt.foldtext = ''
 
 -- Termguicolors
 vim.opt.termguicolors = true

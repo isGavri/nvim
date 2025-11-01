@@ -44,20 +44,13 @@ require('lazy').setup({
 
   require 'kickstart.plugins.treesitter',
 
-  require 'custom.plugins.markdown',
-
   require 'kickstart.plugins.num',
-
-  -- require 'kickstart.plugins.biscuits',
 
   require 'kickstart.plugins.flash',
 
   require 'kickstart.plugins.snacks',
 
   require 'kickstart.plugins.ui',
-
-  -- Latex
-  require 'custom.plugins.latex',
 
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and

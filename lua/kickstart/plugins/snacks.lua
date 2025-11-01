@@ -9,20 +9,52 @@ return {
     bufdelete = { enablbed = true },
     dashboard = {
       enabled = true,
+      preset = {
+        header = [[
+     ██████   █████           █████                      
+    ▒▒██████ ▒▒███           ▒▒███                       
+     ▒███▒███ ▒███   ██████  ███████    █████  █████ ████
+     ▒███▒▒███▒███  ███▒▒███▒▒▒███▒    ███▒▒  ▒▒███ ▒███ 
+     ▒███ ▒▒██████ ▒███ ▒███  ▒███    ▒▒█████  ▒███ ▒███ 
+     ▒███  ▒▒█████ ▒███ ▒███  ▒███ ███ ▒▒▒▒███ ▒███ ▒███ 
+     █████  ▒▒█████▒▒██████   ▒▒█████  ██████  ▒▒███████ 
+    ▒▒▒▒▒    ▒▒▒▒▒  ▒▒▒▒▒▒     ▒▒▒▒▒  ▒▒▒▒▒▒    ▒▒▒▒▒███ 
+                                                ███ ▒███ 
+                                               ▒▒██████  
+                                                ▒▒▒▒▒▒   
+        ]],
+      },
       sections = {
-        {
-          section = 'terminal',
-          -- cmd = 'cat ~/.config/hypr/black.chafa; sleep .1',
-          cmd = 'cat ~/Pictures/chafa/smoke; sleep .1',
-          -- Slow, i redirected the output of the command to some file and then i cat it on the start up to make it faster
-          -- cmd = 'chafa ~/.config/hypr/wallpaper.jpg --format symbols --symbols vhalf --size 60x17 --stretch; sleep .1',
-          height = 20,
-          padding = 1,
-        },
+        -- {
+        --   section = 'terminal',
+        --   -- cmd = 'cat ~/.config/hypr/black.chafa; sleep .1',
+        --   cmd = 'cat ~/Pictures/chafa/smoke; sleep .1',
+        --   -- Slow, i redirected the output of the command to some file and then i cat it on the start up to make it faster
+        --   -- cmd = 'chafa ~/.config/hypr/wallpaper.jpg --format symbols --symbols vhalf --size 60x17 --stretch; sleep .1',
+        --   height = 20,
+        --   padding = 1,
+        -- },
+        { section = 'header' },
+        --         {
+        --           section = 'terminal',
+        --           cmd = [[echo "
+        -- #     ██████   █████           █████
+        -- #    ▒▒██████ ▒▒███           ▒▒███
+        -- #     ▒███▒███ ▒███   ██████  ███████    █████  █████ ████
+        -- #     ▒███▒▒███▒███  ███▒▒███▒▒▒███▒    ███▒▒  ▒▒███ ▒███
+        -- #     ▒███ ▒▒██████ ▒███ ▒███  ▒███    ▒▒█████  ▒███ ▒███
+        -- #     ▒███  ▒▒█████ ▒███ ▒███  ▒███ ███ ▒▒▒▒███ ▒███ ▒███
+        -- #     █████  ▒▒█████▒▒██████   ▒▒█████  ██████  ▒▒███████
+        -- #    ▒▒▒▒▒    ▒▒▒▒▒  ▒▒▒▒▒▒     ▒▒▒▒▒  ▒▒▒▒▒▒    ▒▒▒▒▒███
+        -- #                                                ███ ▒███
+        -- #                                               ▒▒██████
+        -- #                                                ▒▒▒▒▒▒   "]],
+        --           hl = 'header',
+        --         },
         {
           pane = 2,
           { icon = ' ', title = 'Keymaps', section = 'keys', indent = 2, padding = 1 },
-          { icon = ' ', title = 'Recent Files', section = 'recent_files', indent = 2, padding = 1 },
+          -- { icon = ' ', title = 'Recent Files', section = 'recent_files', indent = 2, padding = 1 },
           {
             icon = ' ',
             title = 'Git Status',
@@ -31,16 +63,17 @@ return {
               return Snacks.git.get_root() ~= nil
             end,
             cmd = 'git status --short --branch --renames',
-            height = 5,
-            padding = 1,
+            height = 8,
+            padding = 2,
             ttl = 5 * 60,
             indent = 3,
-            { section = 'startup' },
           },
         },
+
+        { section = 'startup' },
       },
     },
-    dim = { enabled = true },
+    dim = { enabled = false },
     -- explorer = { enabled = false},
     git = { enabled = true },
     -- image = { enabled = true },
@@ -71,7 +104,13 @@ return {
     },
     -- quickfile = { enabled = true },
     rename = { enabled = true },
-    scroll = { enabled = true },
+    scroll = { enabled = true, animate = {
+      duration = {
+        step = 15,
+        total = 50,
+      },
+      easing = 'linear',
+    } },
     -- statuscolumn = {
     --   enabled = true,
     --   folds = {
