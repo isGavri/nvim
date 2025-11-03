@@ -14,7 +14,7 @@ vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { noremap = true, sil
 -- Diagnostic line keymap
 vim.keymap.set('n', '<leader>cd', vim.diagnostic.open_float, { noremap = true, silent = true, desc = 'Open window line of diagnisis' })
 -- Dimiss notifications
-vim.keymap.set('n', '<leader>un', ':Noice dimiss<CR>', { desc = 'Dimiss notifications' })
+vim.keymap.set('n', '<leader>un', ':Noice dismiss<CR>', { desc = 'Dimiss notifications' })
 
 -- Exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
