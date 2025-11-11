@@ -6,10 +6,12 @@ return {
   --   -- priority = 1000,
   --   config = function()
   --     vim.g.zenbones_darken_comments = 45
-  --     -- vim.cmd.colorscheme 'zenbones'
+  --     vim.cmd.colorscheme 'zenbones'
   --
   --     -- vim.api.nvim_set_hl(0, 'Normal', { bg = '#0A0E08', nocombine = true })
+  --     vim.api.nvim_set_hl(0, 'Normal', { bg = 'none', nocombine = true })
   --     -- vim.api.nvim_set_hl(0, 'Folded', { bg = '#0A0E08' })
+  --     vim.api.nvim_set_hl(0, 'Folded', { bg = 'none' })
   --   end,
   -- },
   -- {
@@ -23,17 +25,27 @@ return {
   -- {
   --   'shaunsingh/nord.nvim',
   --   config = function()
-  --     -- vim.cmd.colorscheme 'nord'
+  --     -- Example config in lua
+  --     vim.g.nord_contrast = true
+  --     vim.g.nord_borders = false
+  --     vim.g.nord_disable_background = true
+  --     vim.g.nord_italic = false
+  --     vim.g.nord_uniform_diff_background = true
+  --     vim.g.nord_bold = false
+  --
+  --     -- Load the colorscheme
+  --     require('nord').set()
+  --     vim.cmd.colorscheme 'nord'
   --   end,
   -- },
 
   -- {
   --   'rjshkhr/shadow.nvim',
-  --   -- lazy = false,
-  --   -- priority = 1000,
+  --   lazy = false,
+  --   priority = 1000,
   --   config = function()
   --     vim.opt.termguicolors = true
-  --     -- vim.cmd.colorscheme 'shadow'
+  --     vim.cmd.colorscheme 'shadow'
   --   end,
   -- },
   -- {

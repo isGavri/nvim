@@ -37,7 +37,7 @@ return {
                 ls.jump(-1)
               end, { silent = true })
               -- Uncomment for friendly-snippets
-              -- require('luasnip.loaders.from_vscode').lazy_load()
+              require('luasnip.loaders.from_vscode').lazy_load()
               local list_snips = function()
                 local ft_list = require('luasnip').available()[vim.o.filetype]
                 local ft_snips = {}
