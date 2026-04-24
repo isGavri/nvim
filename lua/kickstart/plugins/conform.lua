@@ -32,15 +32,28 @@ return {
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
-        tex = { 'tex-fmt' },
+        -- tex = { 'tex-fmt' },
         c = { 'clang-format' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         python = { 'black' },
+        java = { 'google-java-format' },
+        -- php = { 'pint' },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
-        -- javascript = { "prettierd", "prettier", stop_after_first = true },
+        html = { 'prettier' },
+        css = { 'prettier' },
+        javascript = { 'prettier' },
+        typescript = { 'prettier' },
+        javascriptreact = { 'prettier' },
+        typescriptreact = { 'prettier' },
       },
+
+      -- format_on_save = {
+      --   -- These options will be passed to conform.format()
+      --   timeout_ms = 500,
+      --   lsp_fallback = true,
+      -- },
     },
   },
 }

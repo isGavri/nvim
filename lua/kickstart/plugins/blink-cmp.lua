@@ -92,14 +92,11 @@ return {
         -- <c-k>: Toggle signature help
         --
         -- See :h blink-cmp-config-keymap for defining your own keymap
-        preset = 'enter',
-        ['<Up>'] = false,
-        ['<Down>'] = false,
-        ['<Esc>'] = { 'hide', 'fallback' },
+        preset = 'default',
+        ['<tab>'] = false,
+        ['<S-tab>'] = false,
         ['<C-l>'] = { 'snippet_forward', 'fallback' },
         ['<C-h>'] = { 'snippet_backward', 'fallback' },
-        ['<Tab>'] = { 'select_next', 'fallback' },
-        ['<S-Tab>'] = { 'select_prev', 'fallback' },
 
         -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
         --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
@@ -108,17 +105,19 @@ return {
       appearance = {
         -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
         -- Adjusts spacing to ensure icons are aligned
-        nerd_font_variant = 'mono',
+        nerd_font_variant = 'normal',
       },
 
       completion = {
         -- By default, you may press `<c-space>` to show the documentation.
         -- Optionally, set `auto_show = true` to show the documentation after a delay.
+        menu = { auto_show = true },
         keyword = { range = 'prefix' },
         documentation = { auto_show = false, auto_show_delay_ms = 500 },
         list = {
-          selection = { preselect = true, auto_insert = true },
+          selection = { preselect = true, auto_insert = false },
         },
+        ghost_text = { enabled = false },
       },
 
       sources = {

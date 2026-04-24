@@ -1,19 +1,24 @@
 return {
-  -- {
-  --   'zenbones-theme/zenbones.nvim',
-  --   dependencies = 'rktjmp/lush.nvim',
-  --   -- lazy = false,
-  --   -- priority = 1000,
-  --   config = function()
-  --     vim.g.zenbones_darken_comments = 45
-  --     vim.cmd.colorscheme 'zenbones'
-  --
-  --     -- vim.api.nvim_set_hl(0, 'Normal', { bg = '#0A0E08', nocombine = true })
-  --     vim.api.nvim_set_hl(0, 'Normal', { bg = 'none', nocombine = true })
-  --     -- vim.api.nvim_set_hl(0, 'Folded', { bg = '#0A0E08' })
-  --     vim.api.nvim_set_hl(0, 'Folded', { bg = 'none' })
-  --   end,
-  -- },
+  {
+    'zenbones-theme/zenbones.nvim',
+    dependencies = 'rktjmp/lush.nvim',
+    -- lazy = false,
+    -- priority = 1000,
+    config = function()
+      vim.g.zenbones_lighten_noncurrent_window = true
+      vim.g.zenbones_colorize_diagnostic_underline_text = true
+      vim.g.zenbones_transparent_background = true
+      vim.cmd.colorscheme 'zenbones'
+
+      -- vim.api.nvim_set_hl(0, 'Normal', { bg = '#0A0E08', nocombine = true })
+      -- vim.api.nvim_set_hl(0, 'Normal', { bg = 'none', nocombine = true })
+      -- vim.api.nvim_set_hl(0, 'Folded', { bg = '#0A0E08' })
+      vim.api.nvim_set_hl(0, 'Folded', { bg = 'none' })
+      -- Lua
+      vim.api.nvim_set_hl(0, 'WinBar', { bg = 'none' })
+      vim.api.nvim_set_hl(0, 'WinBarNC', { bg = 'none' })
+    end,
+  },
   -- {
   --   'folke/tokyonight.nvim',
   --   -- lazy = false,
@@ -61,100 +66,135 @@ return {
   --     vim.g.gruvbox_mateial_dim_inactive_windows = 1
   --     vim.g.gruvbox_material_better_performance = 1
   --     vim.g.gruvbox_material_enable_italic = true
-  --     -- vim.cmd.colorscheme 'gruvbox-material'
+  --     vim.g.gruvbox_material_transparent_background = 2
+  --     vim.g.gruvbox_material_diagnostic_line_highlight = 1
+  --     vim.g.gruvbox_material_float_style = 'blend'
+  --
+  --     vim.cmd.colorscheme 'gruvbox-material'
   --   end,
   -- },
-  {
-    'rebelot/kanagawa.nvim',
-    -- lazy = false,
-    -- priority = 1000,
-    config = function()
-      require('kanagawa').setup {
-        undercurl = true, -- enable undercurls
-        commentStyle = { italic = true },
-        keywordStyle = { italic = true },
-        statementStyle = { bold = true },
-        transparent = true, -- do not set background color
-        dimInactive = false, -- dim inactive window `:h hl-NormalNC`
-        terminalColors = true, -- define vim.g.terminal_color_{0,17}
-
-        -- wave, dragon, lotus
-        theme = 'dragon',
-        background = {
-          dark = 'dragon',
-          light = 'lotus',
-        },
-
-        colors = {
-          theme = {
-            all = {
-              ui = {
-                bg_gutter = 'none',
-              },
-            },
-          },
-        },
-        overrides = function(colors)
-          local theme = colors.theme
-
-          local makeDiagnosticColor = function(color)
-            local c = require 'kanagawa.lib.color'
-            return { fg = color, bg = c(color):blend(theme.ui.bg, 0.9):to_hex() }
-          end
-
-          return {
-            NormalFloat = { bg = 'none' },
-            FloatBorder = { bg = 'none' },
-            FloatTitle = { bg = 'none' },
-
-            -- Save an hlgroup with dark background and dimmed foreground
-            -- so that you can use it where your still want darker windows.
-            -- E.g.: autocmd TermOpen * setlocal winhighlight=Normal:NormalDark
-            NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
-
-            -- Popular plugins that open floats will link to NormalFloat by default;
-            -- set their background accordingly if you wish to keep them dark and borderless
-            LazyNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
-            MasonNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
-            -- *** Neotree ***
-            NeoTreeNormal = { bg = nil },
-            NeoTreeNormalNC = { bg = nil },
-            NeoTreeEndOfBuffer = { bg = nil },
-            NeoTreeGitModified = { fg = '#A99D82' },
-            WarningMsg = { bg = nil },
-            FloatFooter = { bg = nil },
-
-            -- *** Telescope ***
-            TelescopeTitle = { fg = theme.ui.special, bold = true },
-            TelescopePromptNormal = { bg = theme.ui.bg_p1 },
-            TelescopePromptBorder = { fg = theme.ui.bg_p1, bg = theme.ui.bg_p1 },
-            TelescopeResultsNormal = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m1 },
-            TelescopeResultsBorder = { fg = theme.ui.bg_m1, bg = theme.ui.bg_m1 },
-            TelescopePreviewNormal = { bg = theme.ui.bg_dim },
-            TelescopePreviewBorder = { bg = theme.ui.bg_dim, fg = theme.ui.bg_dim },
-
-            -- *** Folded ***
-            Folded = { fg = theme.ui.fg, bg = 'NONE' },
-
-            -- ** Diagnosis ***
-            DiagnosticVirtualTextHint = makeDiagnosticColor(theme.diag.hint),
-            DiagnosticVirtualTextInfo = makeDiagnosticColor(theme.diag.info),
-            DiagnosticVirtualTextWarn = makeDiagnosticColor(theme.diag.warning),
-            DiagnosticVirtualTextError = makeDiagnosticColor(theme.diag.error),
-
-            -- *** Popup ****
-            Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1, blend = vim.o.pumblend }, -- add `blend = vim.o.pumblend` to enable transparency
-            PmenuSel = { fg = 'NONE', bg = theme.ui.bg_p2 },
-            PmenuSbar = { bg = theme.ui.bg_m1 },
-            PmenuThumb = { bg = theme.ui.bg_p2 },
-          }
-        end,
-      }
-
-      -- setup must be called before loading
-      vim.cmd.colorscheme 'kanagawa'
-    end,
-  },
+  -- {
+  --   'rebelot/kanagawa.nvim',
+  --   -- lazy = false,
+  --   -- priority = 1000,
+  --   config = function()
+  --     require('kanagawa').setup {
+  --       undercurl = true, -- enable undercurls
+  --       commentStyle = { italic = true },
+  --       keywordStyle = { italic = true },
+  --       statementStyle = { bold = true },
+  --       transparent = true, -- do not set background color
+  --       dimInactive = false, -- dim inactive window `:h hl-NormalNC`
+  --       terminalColors = true, -- define vim.g.terminal_color_{0,17}
+  --
+  --       -- wave, dragon, lotus
+  --       theme = 'dragon',
+  --       background = {
+  --         dark = 'dragon',
+  --         light = 'lotus',
+  --       },
+  --
+  --       colors = {
+  --         palette = {
+  --           -- Background colors from kitty
+  --           sumiInk0 = '#0B0B0B',
+  --           sumiInk1 = '#0A0E08',
+  --           sumiInk3 = '#1C1917',
+  --           sumiInk4 = '#403833',
+  --
+  --           -- Foreground colors from kitty
+  --           fujiWhite = '#B4BDC3',
+  --           oldWhite = '#B4BDC3',
+  --           fujiGray = '#888F94',
+  --
+  --           -- Main palette from kitty
+  --           autumnRed = '#DE6E7C',
+  --           autumnGreen = '#819B69',
+  --           autumnYellow = '#B77E64',
+  --           carpYellow = '#D68C67',
+  --           waveBlue1 = '#6099C0',
+  --           waveBlue2 = '#61ABDA',
+  --           springViolet1 = '#B279A7',
+  --           springViolet2 = '#CF86C1',
+  --           waveAqua1 = '#66A5AD',
+  --           waveAqua2 = '#65B8C1',
+  --
+  --           -- Bright variants
+  --           samuraiRed = '#E8838F',
+  --           springGreen = '#8BAE68',
+  --
+  --           -- Cursor from kitty
+  --           peachRed = '#AA5A64',
+  --         },
+  --         theme = {
+  --           all = {
+  --             ui = {
+  --               bg_gutter = 'none',
+  --             },
+  --           },
+  --         },
+  --       },
+  --       overrides = function(colors)
+  --         local theme = colors.theme
+  --
+  --         local makeDiagnosticColor = function(color)
+  --           local c = require 'kanagawa.lib.color'
+  --           return { fg = color, bg = c(color):blend(theme.ui.bg, 0.9):to_hex() }
+  --         end
+  --
+  --         return {
+  --           NormalFloat = { bg = 'none' },
+  --           FloatBorder = { bg = 'none' },
+  --           FloatTitle = { bg = 'none' },
+  --
+  --           -- Save an hlgroup with dark background and dimmed foreground
+  --           -- so that you can use it where your still want darker windows.
+  --           -- E.g.: autocmd TermOpen * setlocal winhighlight=Normal:NormalDark
+  --           NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
+  --
+  --           -- Popular plugins that open floats will link to NormalFloat by default;
+  --           -- set their background accordingly if you wish to keep them dark and borderless
+  --           LazyNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
+  --           MasonNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
+  --           -- *** Neotree ***
+  --           NeoTreeNormal = { bg = nil },
+  --           NeoTreeNormalNC = { bg = nil },
+  --           NeoTreeEndOfBuffer = { bg = nil },
+  --           NeoTreeGitModified = { fg = '#A99D82' },
+  --           WarningMsg = { bg = nil },
+  --           FloatFooter = { bg = nil },
+  --
+  --           -- *** Telescope ***
+  --           TelescopeTitle = { fg = theme.ui.special, bold = true },
+  --           TelescopePromptNormal = { bg = theme.ui.bg_p1 },
+  --           TelescopePromptBorder = { fg = theme.ui.bg_p1, bg = theme.ui.bg_p1 },
+  --           TelescopeResultsNormal = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m1 },
+  --           TelescopeResultsBorder = { fg = theme.ui.bg_m1, bg = theme.ui.bg_m1 },
+  --           TelescopePreviewNormal = { bg = theme.ui.bg_dim },
+  --           TelescopePreviewBorder = { bg = theme.ui.bg_dim, fg = theme.ui.bg_dim },
+  --
+  --           -- *** Folded ***
+  --           Folded = { fg = theme.ui.fg, bg = 'NONE' },
+  --
+  --           -- ** Diagnosis ***
+  --           DiagnosticVirtualTextHint = makeDiagnosticColor(theme.diag.hint),
+  --           DiagnosticVirtualTextInfo = makeDiagnosticColor(theme.diag.info),
+  --           DiagnosticVirtualTextWarn = makeDiagnosticColor(theme.diag.warning),
+  --           DiagnosticVirtualTextError = makeDiagnosticColor(theme.diag.error),
+  --
+  --           -- *** Popup ****
+  --           Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1, blend = vim.o.pumblend }, -- add `blend = vim.o.pumblend` to enable transparency
+  --           PmenuSel = { fg = 'NONE', bg = theme.ui.bg_p2 },
+  --           PmenuSbar = { bg = theme.ui.bg_m1 },
+  --           PmenuThumb = { bg = theme.ui.bg_p2 },
+  --         }
+  --       end,
+  --     }
+  --
+  --     -- setup must be called before loading
+  --     -- vim.cmd.colorscheme 'kanagawa'
+  --   end,
+  -- },
   -- {
   --   'neanias/everforest-nvim',
   --   -- lazy = false,

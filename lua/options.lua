@@ -74,16 +74,17 @@ vim.o.inccommand = 'split'
 vim.o.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
-vim.o.scrolloff = 30
+vim.o.scrolloff = 10
+vim.o.sidescrolloff = 8
 
 -- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
 -- instead raise a dialog asking if you wish to save the current file(s)
 -- See `:help 'confirm'`
 vim.o.confirm = true
 
-vim.o.tabstop = 2
-vim.o.softtabstop = 2
-vim.o.shiftwidth = 2
+vim.o.tabstop = 4
+vim.o.softtabstop = 4
+vim.o.shiftwidth = 4
 vim.o.expandtab = true
 
 vim.o.termguicolors = true
@@ -92,12 +93,18 @@ vim.o.termguicolors = true
 vim.o.foldmethod = 'expr'
 vim.o.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 vim.opt.foldcolumn = '0'
-vim.o.foldlevelstart = 99
-vim.opt.foldlevelstart = 4
+vim.o.foldlevel = 999
+vim.opt.foldlevelstart = 99
 
 vim.opt.foldtext = ''
 
 -- Termguicolors
 vim.opt.termguicolors = true
+
+vim.filetype.add {
+  extension = {
+    pl = 'prolog',
+  },
+}
 
 -- vim: ts=2 sts=2 sw=2 et
